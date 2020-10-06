@@ -1,0 +1,97 @@
+<div class="board">
+
+  <div class="board-bar">
+    <div class="board-name">
+      {{ project.board.name }}
+
+      <mat-icon class="nameEdit" (click)="openEditProjectBoardNameForm(this.project)">
+        create
+      </mat-icon>
+    </div>
+
+  </div>
+
+  <div class="board-wrapper">
+
+    <div class="board-columns" cdkDropListGroup>
+      <div class="board-column" *ngFor="let column of project.board.columns">
+
+        <div class="column-title">
+          {{ column.name }}
+          <mat-icon class="createTask" (click)="goToCreateTask(column.name, project.id)">
+            add_circle_outline
+          </mat-icon>
+        </div>
+
+        <div class="tasks-container"
+             cdkDropList
+             [cdkDropListData]="column.projectTaskList"
+             (cdkDropListDropped)="drop($event)">
+
+          <div class="task" *ngFor="let task of column.projectTaskList" cdkDrag
+               style="background:{{task.taskColor.cssName}}">
+
+            <div class="container">
+
+              <div class="row">
+                <b class="taskTitle">{{ task.title }}</b>
+
+                <div class="spacer"></div>
+                <div class="edit" (click)="openEditProjectTaskForm(task,project.id)">
+
+                  <mat-icon>
+                    create
+                  </mat-icon>
+                </div>
+                &nbsp;
+                <div class="delete" (click)="deleteTask(project.id,task.id)">
+                  <mat-icon>
+                    delete
+                  </mat-icon>
+                </div>
+              </div>
+
+              <div class="row">
+
+
+              <div class="spacer"></div>
+                <mat-icon class="calendar" *ngIf="task.deadline !== null">
+                  schedule
+                </mat-icon>
+
+              <span class="comment" (click)="goToComment(task.id)">
+              <mat-icon>
+                comment
+              </mat-icon>
+              <b></b>
+            </span>
+              </div>
+
+            </div>
+
+
+
+
+            <div *cdkDragPreview>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-info">Task details:</li>
+                <li class="list-group-item list-group-item-light">Name:<b> {{task.title}}</b></li>
+                <li class="list-group-item list-group-item-light">Description: <i>{{task.description}}</i></li>
+                <li class="list-group-item list-group-item-light" *ngIf="task.deadline!== null">Deadline: {{task.deadline}} </li>
+                <li class="list-group-item list-group-item-light" *ngIf="task.creator !== null">Created By: {{task.creator.firstName}} {{task.creator.lastName}}</li>
+                <li class="list-group-item list-group-item-light">Created on: {{task.date}}</li>
+              </ul>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+

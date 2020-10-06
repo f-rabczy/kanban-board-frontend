@@ -1,0 +1,67 @@
+<div class="board">
+
+  <div class="board-bar">
+    <div class="board-name">
+      {{ board.name }}
+      <mat-icon class="nameEdit" (click)="openEditBoardNameForm(this.board)">
+        create
+      </mat-icon>
+
+    </div>
+
+  </div>
+
+  <div class="board-wrapper">
+
+    <div class="board-columns" cdkDropListGroup>
+      <div class="board-column" *ngFor="let column of board.columns">
+
+        <div class="column-title">
+          {{ column.name }}
+          <mat-icon class="createTask" (click)="goToCreateTask(column.name)">
+          add_circle_outline
+          </mat-icon>
+        </div>
+
+        <div class="tasks-container"
+             cdkDropList
+             [cdkDropListData]="column.userTaskList"
+             (cdkDropListDropped)="drop($event)"
+             >
+          <div class="task" *ngFor="let task of column.userTaskList" cdkDrag style="background:{{task.taskColor.cssName}}" >
+
+            <b>{{ task.title }}</b><br>
+
+
+
+            <div class="spacer"></div>
+            <div class="edit" (click)="openEditTaskForm(task)">
+              <mat-icon>
+                create
+              </mat-icon>
+            </div>
+            &nbsp;
+            <div class="delete" (click)="delete(task.id)">
+              <mat-icon>
+                delete
+              </mat-icon>
+            </div>
+
+            <div *cdkDragPreview>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-info" >Task details:</li>
+                <li class="list-group-item list-group-item-light">Name:<b> {{task.title}}</b></li>
+                <li class="list-group-item list-group-item-light">Description: <i>{{task.description}}</i></li>
+                <li class="list-group-item list-group-item-light">Created on: {{task.date}}</li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

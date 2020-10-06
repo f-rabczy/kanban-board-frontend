@@ -1,0 +1,84 @@
+.container {
+  padding-top: 30px;
+  max-width: 70%;
+
+}
+.panel-body {
+  padding: 0px;
+}
+
+.panel-footer .pagination {
+  margin: 0;
+}
+
+.panel .glyphicon, .list-group-item .glyphicon {
+  margin-right: 5px;
+}
+
+.panel-body .radio, .checkbox {
+  display: inline-block;
+  margin: 0px;
+}
+
+.panel-body input[type=checkbox]:checked + label {
+  text-decoration: line-through;
+  color: rgb(128, 144, 160);
+}
+
+.list-group-item:hover, a.list-group-item:focus {
+  text-decoration: none;
+  background-color: rgb(245, 245, 245);
+}
+
+.list-group {
+  margin-bottom: 0px;
+}
+
+.project{
+  padding-top: 4px;
+  padding-bottom: 5px;
+
+  min-height: 20px;
+}
+
+.list-group-item{
+  cursor:default;
+}
+.spacer{
+  flex: 1 1 auto ;
+  cursor: default;
+}
+
+.info{
+
+  font-size: 20px;
+  cursor: pointer;
+  max-width: 10px;
+}
+.infoWrapper{
+  width: 10px;
+  display: inline-block;
+}
+
+.projectName{
+  max-width: 30px;
+  cursor: pointer;
+}
+
+.wrapper{
+  background-image: url("http://uwagatomekiaga.pl/wp-content/uploads/2016/09/sky-blue-paint-wallpaper-4.jpg");
+  background-size: cover;
+  min-width: 0;
+  height:100vh;
+  min-height: 100vh
+}
+
+.bi-box-arrow-right {
+  alignment: right;
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 2px;
+
+}
+
+

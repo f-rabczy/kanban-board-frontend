@@ -1,0 +1,214 @@
+.board {
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/27/07/32/light-1282314_960_720.jpg');
+  background-size: cover;
+
+  overflow-y: auto !important;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  // Override Automatic Minimum Size
+  // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
+
+  min-width: 0;
+  min-height: 1200px;
+  max-height: 700px;
+  .board-bar {
+    background: rgba(gray,0.1);
+    padding: 15px 15px;
+
+    max-height: 48px;
+    .board-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: deepskyblue;
+      cursor: default;
+      max-height: 20px;
+
+
+    }
+  }
+
+  .board-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: auto;
+
+    .board-columns {
+      display: flex;
+      flex-grow: 1;
+
+      .board-column {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 0; // to force the columns to all be the same size, regardless of content
+        cursor: default;
+        min-width: 300px;
+
+        margin: 50px;
+        padding: 25px;
+
+        border-radius: 4px;
+
+        background: rgba(white, 0.5);
+
+        &:not(:first-child) {
+          margin-left: 0;
+        }
+
+        .column-title {
+          font-size: 20px;
+          font-weight: 800;
+          font-family: 'Lato', sans-serif;
+          text-transform: uppercase;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+.board-name:hover .nameEdit{
+  display:  inline-block;
+  max-height: 10px;
+  position: absolute;
+}
+
+.nameEdit{
+  cursor:pointer;
+  display: none;
+  max-height: 20px;
+  padding-top: 2px;
+  padding-left: 3px;
+}
+
+.tasks-container {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.task {
+  display: flex;
+  padding: 15px 12px;
+  font-size: 15px;
+
+  border-bottom: solid 1px #ddd;
+  border-radius: 4px;
+
+  margin-bottom: 15px;
+
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05),
+  0 3px 14px 2px rgba(0, 0, 0, 0.05);
+  min-height: 68px;
+  max-height: 68px;
+
+  .taskTitle{
+    font-size: large;
+
+
+  }
+
+  .delete{
+    cursor:pointer;
+    max-height: 30px;
+    max-width: 20px;
+    display: none;
+
+
+
+  }
+
+  .edit{
+    cursor:pointer;
+    display: none;
+    max-height: 30px;
+    max-width: 20px;
+  }
+  .comment{
+
+    cursor: pointer;
+  }
+
+  .deadline{
+    position: relative;
+    top: 8px;
+  }
+
+
+
+}
+
+.task:hover .delete{
+  display:block;
+  position: relative;
+  bottom: 7px;
+
+}
+
+.task:hover .edit{
+  display:block;
+  position: relative;
+  bottom: 7px;
+}
+
+.task:hover .calendar{
+  position: relative;
+  bottom: 9px;
+}
+
+.task:hover .comment{
+  position: relative;
+  bottom: 9px;
+}
+
+.task:hover .deadline{
+  position: inherit;
+  display:inline-block;
+  padding-bottom: 2px;
+}
+
+
+
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  min-width: 310px;
+  min-height: 125px ;
+  max-width: 310px;
+  max-height: 125px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.tasks-container.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.spacer{
+  flex: 1 1 auto ;
+}
+
+.createTask{
+  cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Edit Board Name</h1>
+<form [formGroup]="myForm"  >
+  <mat-form-field>
+    <input matInput formControlName="name" required>
+  </mat-form-field>
+  <br>
+  <br>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button (click)="edit(this.myForm.controls['name'].value, data.project.id)" cdkFocusInitial>Edit</button>
+</form>

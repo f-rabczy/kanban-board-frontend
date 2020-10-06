@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Edit Board Name</h1>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="myForm"  >
+
+  <mat-form-field>
+    <input matInput formControlName="name" required>
+  </mat-form-field>
+  <br>
+  <br>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button  (click)="edit(data.board.id,this.myForm.controls['name'].value)">Edit</button>
+</form>
+</mat-dialog-content>

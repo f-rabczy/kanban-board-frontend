@@ -1,0 +1,89 @@
+<br>
+<div class="container h-100" >
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-7">
+      <div class="card">
+        <h4 class="card-header">Register</h4>
+        <div class="card-body">
+          <form #registerForm="ngForm" (ngSubmit)="register()">
+
+            <div class="form-group"
+                 [class.has-error]="usernameControl.invalid && (usernameControl.touched || usernameControl.dirty)">
+              <label for="username" class="control-label">Username: </label>
+              <input required minlength="5" type="text" class="form-control" name="username" id="username"
+                     [(ngModel)]="this.username" #usernameControl="ngModel"/>
+              <br>
+              <span class="alert alert-danger" *ngIf="usernameControl.invalid && usernameControl.touched">
+          Username is required
+        </span>
+              <span class="alert alert-danger" *ngIf="usernameControl.errors?.minlength && usernameControl.invalid">
+          Username must be at least 5 characters long.
+        </span>
+            </div>
+
+            <div class="form-group" [class.has-error]="passwordControl.invalid && passwordControl.touched">
+              <label for="password">Password: </label>
+              <input type="password" minlength="5" class="form-control" name="password" id="password" required
+                     [(ngModel)]="this.password" #passwordControl="ngModel"/>
+              <br>
+              <span class="alert alert-danger" *ngIf="passwordControl.invalid && passwordControl.touched">
+          Password is required
+        </span>
+              <span class="alert alert-danger" *ngIf="passwordControl.errors?.minlength && passwordControl.invalid">
+          Password must be at least 5 characters long.
+        </span>
+            </div>
+
+            <div class="form-group"
+                 [class.has-error]="emailControl.invalid && (emailControl.touched || emailControl.dirty)">
+              <label for="email" class="control-label">Email: </label>
+              <input required minlength="5" type="text" class="form-control" name="email" id="email"
+                     [(ngModel)]="this.email" #emailControl="ngModel"/>
+              <br>
+              <span class="alert alert-danger" *ngIf="emailControl.invalid && emailControl.touched">
+          Email is required
+        </span>
+              <span class="alert alert-danger" *ngIf="emailControl.errors?.minlength && emailControl.invalid">
+          Email must be at least 5 characters long.
+        </span>
+            </div>
+            <div class="form-group"
+                 [class.has-error]="firstNameControl.invalid && (firstNameControl.touched || firstNameControl.dirty)">
+              <label for="firstName" class="control-label">First Name: </label>
+              <input required minlength="5" type="text" class="form-control" name="firstName" id="firstName"
+                     [(ngModel)]="this.firstName" #firstNameControl="ngModel"/>
+              <br>
+              <span class="alert alert-danger" *ngIf="firstNameControl.invalid && firstNameControl.touched">
+          First Name  is required
+        </span>
+              <span class="alert alert-danger" *ngIf="emailControl.errors?.minlength && emailControl.invalid">
+          First Name must be at least 5 characters long.
+        </span>
+            </div>
+            <div class="form-group"
+                 [class.has-error]="lastNameControl.invalid && (lastNameControl.touched || lastNameControl.dirty)">
+              <label for="lastName" class="control-label">Last Name: </label>
+              <input required minlength="5" type="text" class="form-control" name="lastName" id="lastName"
+                     [(ngModel)]="this.lastName" #lastNameControl="ngModel" />
+              <br>
+              <span class="alert alert-danger" *ngIf="lastNameControl.invalid && lastNameControl.touched">
+          Last Name  is required
+        </span>
+              <span class="alert alert-danger" *ngIf="lastNameControl.errors?.minlength && lastNameControl.invalid">
+          Last Name must be at least 5 characters long.
+        </span>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-primary" [disabled]="registerForm.invalid">
+                Sign up
+              </button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+
+<div *ngIf="!authService.isUserLoggedIn()">
+  <mat-toolbar color="primary">
+
+  <div class="center-container">
+    <span (click)="backToHome()" class="homeLogo" >
+    <mat-icon>
+      menu_book
+    </mat-icon  >
+   kanbanWorld
+  </span>
+  </div>
+
+
+  <div class ="spacer"></div>
+  <a mat-button routerLink="register">Sing up</a>
+  <a mat-button routerLink="login">Login</a>
+
+  </mat-toolbar>
+
+</div>
+
+<div *ngIf="authService.isUserLoggedIn()">
+  <mat-toolbar color="primary">
+  <div>
+    <a mat-button (click)="goToMyBoard()">My Board</a>
+    <a mat-button (click)="goToMyProjects()">My Projects </a>
+  </div>
+    <div class="center-container">
+    <span (click)="backToHome()" class="homeLogo" >
+    <mat-icon>menu_book</mat-icon  >
+   kanbanWorld
+  </span>
+    </div>
+
+    <a mat-button (click) = "authService.logOut()" >Log out &nbsp;&nbsp;</a>
+    <a class="profile" (click)="goToMyProfile()">
+      <mat-icon>account_circle</mat-icon>
+    </a>
+  </mat-toolbar>
+</div>
